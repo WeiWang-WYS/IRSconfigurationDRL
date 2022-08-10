@@ -80,7 +80,9 @@ class DQNAgent:
             state_batch_0.append(state[0]) ## Sub-state 1 -- Estimated Equivalent Wireless Channel H
             state_batch_1.append(state[1]) ## Sub-state 2 -- Current Reflection Pattern
             target_batch.append(target_f[0]) ## target batch
-        history = self.model.fit( {"InputA": np.array(state_batch_0), "InputB": np.array(state_batch_1)}, {"Outputs":np.array(target_batch)}, epochs=1, verbose=0)
+            InputA_data = np.reshape(np.array(state_batch_0), (batch_size, -1))
+            InputB_data = np.reshape(np.array(state_batch_1), (batch_size, -1))
+        history = self.model.fit( {"InputA": InputA_data, "InputB": InputB_data }, {"Outputs":np.array(target_batch)}, epochs=1, verbose=0)
 
         # Keeping track of loss
         loss = history.history['loss'][0]
