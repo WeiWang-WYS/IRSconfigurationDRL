@@ -64,7 +64,7 @@ class DQNAgent:
         if np.random.rand() <= self.epsilon:
             act_type = 'random'
             return random.randrange(self.action_size), act_type
-        act_values = self.model.predict(state)
+        act_values = self.model.predict(state, verbose=0)
         act_type = 'RL'
         return np.argmax(act_values[0]), act_type # returns action
 
@@ -73,9 +73,9 @@ class DQNAgent:
         minibatch[0] = self.memory[len(self.memory)-1]
         state_batch_0, state_batch_1, target_batch = [], [], []
         for state, action, reward, next_state in minibatch:
-            ActionIndex = np.argmax(self.model.predict(next_state)[0]) ### Selection using DQN
-            target = reward + self.gamma * self.target_model.predict(next_state)[0][ActionIndex]   # Evaluation using target network
-            target_f = self.model.predict(state) ## DQN
+            ActionIndex = np.argmax(self.model.predict(next_state, verbose=0)[0]) ### Selection using DQN
+            target = reward + self.gamma * self.target_model.predict(next_state, verbose=0)[0][ActionIndex]   # Evaluation using target network
+            target_f = self.model.predict(state, verbose=0) ## DQN
             target_f[0][action] = target
             state_batch_0.append(state[0]) ## Sub-state 1 -- Estimated Equivalent Wireless Channel H
             state_batch_1.append(state[1]) ## Sub-state 2 -- Current Reflection Pattern
