@@ -5,4 +5,4 @@ Source code for Wei Wang and Wei Zhang, "Intelligent Reflecting Surface Configur
 Author Contacts：richardwangseu@gmail.com
 
 Video presentation for this work 
-https://weiwang-wys.github.io/files/GCfinal_small2.mp4
+https://weiwang-wys.github.io/talks/2022-12-7-talk
