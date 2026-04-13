@@ -209,8 +209,8 @@ if __name__ == "__main__":
         return moving_aves
 
     fig = plt.figure()
-    plt.xlabel('Time', fontsize=14)
-    plt.ylabel('Rate', fontsize=14, labelpad=-2)
+    plt.xlabel('Time', fontsize=20)
+    plt.ylabel('Rate', fontsize=20, labelpad=-2)
 
     SumRate_seq_ave = get_moving_average(Rate_DQN_seq_episode, N)
     RandomRate_seq_ave = get_moving_average(Rate_Random_seq_episode, N)
